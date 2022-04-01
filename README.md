@@ -11,7 +11,7 @@
 
 from pages.product_page import ProductPageE   ImportError: attempted relative import with no known parent package
 
-Если данная ошибка возниктен, необходимо в файлах test_main_page.py и test_image_page.py добавить точку перед pages
+Если данная ошибка возникyеn, необходимо в файлах test_main_page.py и test_image_page.py добавить точку перед pages
 
 ___
 
