@@ -10,6 +10,19 @@ class ImagePage(BasePage):
         current_url = self.browser.current_url
         assert expected_url in current_url, "url is not correct"
 
+    def should_be_switch_to_next_and_prev_image(self):
+        prev_page_url = self.browser.current_url
+        button_next = self.browser.find_element(*ImagePageLocators.BUTTON_NEXT)
+        button_next.click()
+        WebDriverWait(self.browser, 5).until(EC.url_changes(prev_page_url))
+        next_page_url = self.browser.current_url
+        assert prev_page_url != next_page_url, "Next image do not open"
+
+        button_prev = self.browser.find_element(*ImagePageLocators.BUTTON_PREV)
+        button_prev.click()
+        WebDriverWait(self.browser, 5).until(EC.url_changes(next_page_url))
+        assert prev_page_url == self.browser.current_url, "Prev image do not open"
+
     def should_open_first_category_image(self):
         first_category_image = self.browser.find_element(*ImagePageLocators.FIRST_CATEGORY_IMAGE)
         first_category_image_name = first_category_image.text
@@ -30,17 +43,3 @@ class ImagePage(BasePage):
         first_image.click()
         WebDriverWait(self.browser, 5).until(EC.url_contains(first_image_url))
         assert first_image_url in self.browser.current_url, "first image do not open"
-
-    def should_be_switch_to_next_and_prev_image(self):
-        prev_page_url = self.browser.current_url
-        button_next = self.browser.find_element(*ImagePageLocators.BUTTON_NEXT)
-        button_next.click()
-        WebDriverWait(self.browser, 5).until(EC.url_changes(prev_page_url))
-        next_page_url = self.browser.current_url
-        assert prev_page_url != next_page_url, "Next image do not open"
-
-        button_prev = self.browser.find_element(*ImagePageLocators.BUTTON_PREV)
-        button_prev.click()
-        WebDriverWait(self.browser, 5).until(EC.url_changes(next_page_url))
-        assert prev_page_url == self.browser.current_url, "Prev image do not open"
-
