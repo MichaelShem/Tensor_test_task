@@ -1,5 +1,5 @@
-from .pages.image_page import ImagePage
-from .pages.main_page import MainPage
+from pages.image_page import ImagePage
+from pages.main_page import MainPage
 
 site_name = "https://yandex.ru/"
 expected_url = "https://yandex.ru/images/"

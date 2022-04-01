@@ -1,4 +1,4 @@
-from .pages.main_page import MainPage
+from pages.main_page import MainPage
 
 site_name = "https://yandex.ru/"
 link_name = "tensor.ru"
